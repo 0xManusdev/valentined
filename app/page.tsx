@@ -1,12 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { valentineSteps } from "./utils";
 
 export default function Home() {
 	const [stepIndex, setStepIndex] = useState(0);
 	const [accepted, setAccepted] = useState(false);
+
+	useEffect(() => {
+		valentineSteps.forEach((step) => {
+			const img = new window.Image();
+			img.src = step.gif;
+		});
+	}, []);
 
 	const currentStep = valentineSteps[stepIndex];
 
